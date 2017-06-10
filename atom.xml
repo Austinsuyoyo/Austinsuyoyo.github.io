@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://austinsuyoyo.github.io/"/>
-  <updated>2017-06-09T16:16:12.418Z</updated>
+  <updated>2017-06-10T13:32:06.699Z</updated>
   <id>http://austinsuyoyo.github.io/</id>
   
   <author>
@@ -16,14 +16,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Taipei Street</title>
+    <link href="http://austinsuyoyo.github.io/2016/07/13/TaipeiDinner/"/>
+    <id>http://austinsuyoyo.github.io/2016/07/13/TaipeiDinner/</id>
+    <published>2016-07-12T17:31:00.000Z</published>
+    <updated>2017-06-10T13:32:06.699Z</updated>
+    
+    <content type="html"><![CDATA[<p>Just dinner</p>
+<p>測試中文</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Just dinner&lt;/p&gt;
+&lt;p&gt;測試中文&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="travel" scheme="http://austinsuyoyo.github.io/categories/travel/"/>
+    
+    
+      <category term="LC-A" scheme="http://austinsuyoyo.github.io/tags/LC-A/"/>
+    
+      <category term="Lomo" scheme="http://austinsuyoyo.github.io/tags/Lomo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Palawan0408-0412</title>
     <link href="http://austinsuyoyo.github.io/2016/05/16/PalawanTravel/"/>
     <id>http://austinsuyoyo.github.io/2016/05/16/PalawanTravel/</id>
     <published>2016-05-15T17:31:00.000Z</published>
-    <updated>2017-06-09T16:16:12.418Z</updated>
+    <updated>2017-06-10T13:27:24.035Z</updated>
     
-    <content type="html">&lt;p&gt;Our  graduate student travel in Palawan&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/3s3xFr8l.jpg&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-</content>
+    <content type="html"><![CDATA[<p>Our  graduate student travel in Palawan<br><a id="more"></a><br><img src="http://i.imgur.com/3s3xFr8l.jpg" alt="image"></p>
+]]></content>
     
     <summary type="html">
     
