@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://austinsuyoyo.github.io/"/>
-  <updated>2017-06-10T13:32:06.699Z</updated>
+  <updated>2017-06-24T17:15:18.739Z</updated>
   <id>http://austinsuyoyo.github.io/</id>
   
   <author>
@@ -16,58 +16,81 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Taipei Street</title>
-    <link href="http://austinsuyoyo.github.io/2016/07/13/TaipeiDinner/"/>
-    <id>http://austinsuyoyo.github.io/2016/07/13/TaipeiDinner/</id>
-    <published>2016-07-12T17:31:00.000Z</published>
-    <updated>2017-06-10T13:32:06.699Z</updated>
+    <title>PWM modelsim 仿真模擬</title>
+    <link href="http://austinsuyoyo.github.io/2017/01/15/PWM%20modelsim%20%E4%BB%BF%E7%9C%9F%E6%A8%A1%E6%93%AC/"/>
+    <id>http://austinsuyoyo.github.io/2017/01/15/PWM modelsim 仿真模擬/</id>
+    <published>2017-01-15T15:09:00.000Z</published>
+    <updated>2017-06-24T17:15:18.739Z</updated>
     
-    <content type="html"><![CDATA[<p>Just dinner</p>
-<p>測試中文</p>
+    <content type="html"><![CDATA[<pre class="line-numbers language-verilog"><code class="language-verilog"><span class="token keyword">module</span> <span class="token function">PWM</span><span class="token punctuation">(</span>
+  <span class="token keyword">input</span>       iClk<span class="token punctuation">,</span>     <span class="token comment" spellcheck="true">//clock for counter</span>
+  <span class="token keyword">input</span>       iRst_n<span class="token punctuation">,</span>
+  <span class="token keyword">output</span> <span class="token keyword">reg</span>  oPWM        <span class="token comment" spellcheck="true">//PWM signal out</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">reg</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span>     rPwmCounter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">parameter</span>     rDutyCycle  <span class="token operator">=</span> <span class="token number">11'h7ff</span><span class="token punctuation">;</span>
+
+
+<span class="token important">always@</span><span class="token punctuation">(</span><span class="token keyword">negedge</span> iClk <span class="token keyword">or</span> <span class="token keyword">negedge</span> iRst_n<span class="token punctuation">)</span> <span class="token keyword">begin</span>
+  <span class="token function">if</span><span class="token punctuation">(</span><span class="token operator">!</span>iRst_n<span class="token punctuation">)</span> rPwmCounter <span class="token operator">&lt;=</span> <span class="token number">10'd0</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>             
+      <span class="token keyword">begin</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span> rPwmCounter <span class="token operator">&lt;</span> <span class="token number">7</span> <span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//50%</span>
+        oPWM <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+      <span class="token keyword">else</span>
+        oPWM <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+      rPwmCounter <span class="token operator">&lt;=</span> rPwmCounter<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+
+<span class="token keyword">endmodule</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-verilog"><code class="language-verilog"><span class="token constant">`timescale</span> <span class="token number">1</span>ns<span class="token operator">/</span><span class="token number">100</span>ps
+
+<span class="token keyword">module</span> PWM_tb<span class="token punctuation">;</span>
+
+  <span class="token keyword">reg</span>       iclk50M<span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//clock for counter</span>
+  <span class="token keyword">reg</span>       irst_n<span class="token punctuation">;</span>
+  <span class="token keyword">wire</span>      opwm<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//PWM signal out</span>
+
+
+<span class="token keyword">parameter</span> PERIOD50M <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span> 
+PWM <span class="token function">pwm1</span><span class="token punctuation">(</span>
+           <span class="token punctuation">.</span><span class="token function">iClk</span><span class="token punctuation">(</span>iclk50M<span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment" spellcheck="true">//clock for counter</span>
+           <span class="token punctuation">.</span><span class="token function">iRst_n</span><span class="token punctuation">(</span>irst_n<span class="token punctuation">)</span><span class="token punctuation">,</span>
+           <span class="token punctuation">.</span><span class="token function">oPWM</span><span class="token punctuation">(</span>opwm<span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//PWM signal out</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">initial</span> <span class="token keyword">begin</span>
+  <span class="token number">#0</span> iclk50M <span class="token operator">=</span> <span class="token number">1'b0</span><span class="token punctuation">;</span>
+     irst_n  <span class="token operator">=</span> <span class="token number">1'b0</span><span class="token punctuation">;</span>
+  <span class="token number">#5</span> irst_n  <span class="token operator">=</span> <span class="token number">1'b1</span><span class="token punctuation">;</span>
+<span class="token keyword">end</span>
+
+<span class="token comment" spellcheck="true">// 50MHz</span>
+<span class="token important">always </span>#<span class="token punctuation">(</span>PERIOD50M<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span> iclk50M <span class="token operator">=</span> <span class="token operator">~</span>iclk50M<span class="token punctuation">;</span>
+
+<span class="token keyword">endmodule</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Just dinner&lt;/p&gt;
-&lt;p&gt;測試中文&lt;/p&gt;
-
+      &lt;pre class=&quot;line-numbers language-verilog&quot;&gt;&lt;code class=&quot;language-verilog&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;token funct
     
     </summary>
     
-      <category term="travel" scheme="http://austinsuyoyo.github.io/categories/travel/"/>
+      <category term="FPGA" scheme="http://austinsuyoyo.github.io/categories/FPGA/"/>
     
     
-      <category term="LC-A" scheme="http://austinsuyoyo.github.io/tags/LC-A/"/>
+      <category term="verilog" scheme="http://austinsuyoyo.github.io/tags/verilog/"/>
     
-      <category term="Lomo" scheme="http://austinsuyoyo.github.io/tags/Lomo/"/>
+      <category term="PWM" scheme="http://austinsuyoyo.github.io/tags/PWM/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Palawan0408-0412</title>
-    <link href="http://austinsuyoyo.github.io/2016/05/16/PalawanTravel/"/>
-    <id>http://austinsuyoyo.github.io/2016/05/16/PalawanTravel/</id>
-    <published>2016-05-15T17:31:00.000Z</published>
-    <updated>2017-06-10T14:56:43.107Z</updated>
-    
-    <content type="html"><![CDATA[<p>Our  graduate student travel in Palawan</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Our  graduate student travel in Palawan&lt;/p&gt;
-
-    
-    </summary>
-    
-      <category term="travel" scheme="http://austinsuyoyo.github.io/categories/travel/"/>
-    
-    
-      <category term="LC-A" scheme="http://austinsuyoyo.github.io/tags/LC-A/"/>
-    
-      <category term="Lomo" scheme="http://austinsuyoyo.github.io/tags/Lomo/"/>
-    
-      <category term="Palawan" scheme="http://austinsuyoyo.github.io/tags/Palawan/"/>
+      <category term="testcench" scheme="http://austinsuyoyo.github.io/tags/testcench/"/>
     
   </entry>
   
