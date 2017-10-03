@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://austinsuyoyo.github.io/"/>
-  <updated>2017-06-24T17:57:16.714Z</updated>
+  <updated>2017-06-24T17:57:16.000Z</updated>
   <id>http://austinsuyoyo.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://austinsuyoyo.github.io/2017/01/15/PWM_modelsim_testbench/"/>
     <id>http://austinsuyoyo.github.io/2017/01/15/PWM_modelsim_testbench/</id>
     <published>2017-01-15T15:09:00.000Z</published>
-    <updated>2017-06-24T17:57:16.714Z</updated>
+    <updated>2017-06-24T17:57:16.000Z</updated>
     
     <content type="html"><![CDATA[<pre class="line-numbers language-verilog"><code class="language-verilog"><span class="token keyword">module</span> <span class="token function">PWM</span><span class="token punctuation">(</span>
   <span class="token keyword">input</span>       iClk<span class="token punctuation">,</span>     <span class="token comment" spellcheck="true">//clock for counter</span>
