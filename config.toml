@@ -1,4 +1,4 @@
-baseURL = 'http://austinsuyoyo.github.io/'
+baseURL = 'http://www.austinsuyoyo.com/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = "hugo-theme-monochrome"
+title = 'Austinsuyoyo Blog'
+theme = "hugo-theme-cleanwhite"
