@@ -31,19 +31,20 @@ home = ["HTML", "RSS", "Algolia"]
   leancloud_app_key = ""
 
   # algolia site search
-  algolia_search = true
+  algolia_search = false
   algolia_appId = ""
   algolia_indexName = ""
   algolia_apiKey = ""
 
   # Sidebar settings
-  sidebar_about_description = "Software Developer, Open Source Enthusiast and Life Adventurer"
+  # avatar order list: gravataremail > sidebar_avatar
+  sidebar_about_description = "Embedded Developer"
   #sidebar_avatar = "img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
-  sidebar_avatar = "img/zhaohuabing.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
+  #sidebar_avatar = "img/zhaohuabing.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
   gravataremail = "avui67224307@gmail.com"
   
-  #featured_tags = true 
-  #featured_condition_size = 
+  featured_tags = true 
+  featured_condition_size = 5
 
   # Baidu Analytics
   ba_track_id = ""

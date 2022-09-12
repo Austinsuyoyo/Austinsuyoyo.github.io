@@ -3,9 +3,9 @@ title:       "Awesome Arrs"
 subtitle:    ""
 description: "Collection of Arr series"
 date:        2022-09-08T02:22:49+08:00
-author:      ""
+author:      "Austinsuyoyo"
 image:       ""
-tags:        ["tag1", "tag2"]
+tags:        ["homelab"]
 categories:  [""]
 ---
 
