@@ -5,7 +5,7 @@ description: "Midjourney 是新時代生產利器!"
 date:        2022-09-17T01:23:30+08:00
 author:      ""
 image:       ""
-tags:        ["AI", "tag2"]
+tags:        ["AI"]
 categories:  ["Tech"]
 ---
 

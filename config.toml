@@ -12,6 +12,32 @@ hasCJKLanguage = true
 [outputs]
 home = ["HTML", "RSS", "Algolia"]
 
+# Add menu on nav bar
+[menu]
+
+  [[menu.main]]
+    identifier = "tags"
+    name = "TAGS"
+    url = "/tags/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "categories"
+    name = "Categories"
+    url = "/categories/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "archive"
+    name =  "ARCHIVE"
+    url =  "/archive/"
+    weight = 3
+
+ [[menu.main]]
+    name =  "ABOUT"
+    url =  "/about/"
+    weight = 4
+
 [params]
   author = "Austinsuyoyo"
   header_text = "Austinsuyoyo Blog"
@@ -23,7 +49,9 @@ home = ["HTML", "RSS", "Algolia"]
 
   image_404 = "img/404-bg.jpg"
   title_404 = "Sorry, No page here."
-  omit_categories = false
+
+  # Nav bar setup
+  show_categories = false
 
   # leancloud storage for page view counter
   page_view_conter = false 
@@ -44,7 +72,7 @@ home = ["HTML", "RSS", "Algolia"]
   gravataremail = "avui67224307@gmail.com"
   
   featured_tags = true 
-  featured_condition_size = 5
+  featured_condition_size = 0
 
   # Baidu Analytics
   ba_track_id = ""
@@ -104,15 +132,6 @@ home = ["HTML", "RSS", "Algolia"]
   title = "unsplash"
   href = "https://unsplash.com"
   
-  [[params.addtional_menus]]
-  title =  "ARCHIVE"
-  href =  "/archive/"
-  [[params.addtional_menus]]
-  title =  "NOTES"
-  href =  "/notes/"
-  [[params.addtional_menus]]
-  title =  "ABOUT"
-  href =  "/about/"
 
 [outputFormats.Algolia]
 baseName = "algolia"
